@@ -43,9 +43,16 @@ export default function SignUp(props) {
   const submitSignUpForm = (e) => {
     e.preventDefault();
 
-    console.log("user vars: \n", { variables });
-
     signUpUser({ variables });
+
+    // clear signUp form:
+    setVariables({
+      screenname: "",
+      password: "",
+      role: "user",
+    });
+
+    props.history.push("/signon");
   };
 
   return (

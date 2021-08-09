@@ -29,7 +29,7 @@ export default function Messages() {
 
   useEffect(() => {
     if (selectedUser && !selectedUser.messages) {
-      getMessages({ variables: { from: selectedUser.username } });
+      getMessages({ variables: { from: selectedUser.screenname } });
     }
   }, [selectedUser]);
 
@@ -38,7 +38,7 @@ export default function Messages() {
       dispatch({
         type: "SET_USER_MESSAGES",
         payload: {
-          username: selectedUser.username,
+          screenname: selectedUser.screenname,
           messages: messagesData.getMessages,
         },
       });

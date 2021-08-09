@@ -48,7 +48,7 @@ const GET_USERS = gql`
   }
 `;
 
-export default function BuddyList({ signOut }) {
+export default function BuddyList(props) {
   const [active, setActive] = useState({
     activeTab: 0,
   });
@@ -119,7 +119,7 @@ export default function BuddyList({ signOut }) {
 
   return (
     <div className="IM">
-      <button onClick={signOut} className="temp-btn">
+      <button onClick={props.signOut} className="temp-btn">
         SignOut
       </button>
       <Window className="window buddyListWindow">
@@ -129,7 +129,7 @@ export default function BuddyList({ signOut }) {
             <img className="favicon" alt="favicon" src={favicon} />
             {/* TODO: Make <Screenname>'s BuddyList dynamic */}
             <span className="windowTitle" style={{ margin: "1px" }}>
-              Screenname's Buddy List...
+              {props.screenname && props.screenname}'s Buddy List...
             </span>
           </div>
 

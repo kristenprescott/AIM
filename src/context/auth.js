@@ -7,6 +7,7 @@ const AuthDispatchContext = createContext();
 let user = null;
 const token = localStorage.getItem("token");
 if (token) {
+  console.log("token: \n", token);
   const decodedToken = jwtDecode(token);
   const expiresAt = new Date(decodedToken.exp * 1000);
 
@@ -25,7 +26,7 @@ const authReducer = (state, action) => {
         ...state,
         user: action.payload,
       };
-    case "SIGNOFF":
+    case "SIGNOUT":
       localStorage.removeItem("token");
       return {
         ...state,
