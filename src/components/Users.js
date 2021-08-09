@@ -13,7 +13,15 @@ const GET_USERS = gql`
       phoneNumber
       email
       imagePath
-      buddies
+      buddies {
+        id
+        screenname
+        role
+        buddyInfo
+        email
+        imagePath
+        phonenumber
+      }
       latestMessage {
         uuid
         from
@@ -91,9 +99,9 @@ export default function Users() {
           }
         >
           <img
-            alt="avatar"
-            src={user.avatar}
-            className="avatar"
+            alt="imagePath"
+            src={user.imagePath}
+            className="imagePath"
             style={{ width: "30px" }}
           />
           <div>

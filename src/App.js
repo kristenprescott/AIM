@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { styleReset } from "react95";
 import original from "react95/dist/themes/original";
@@ -12,11 +11,11 @@ import { AuthProvider } from "./context/auth";
 import { MessageProvider } from "./context/message";
 import DynamicRoute from "./utils/DynamicRoute";
 
-import BuddyInfo from "./components/BuddyInfo";
-import InstantMessage from "./Windows/InstantMessage/InstantMessage";
 import SignUp from "./Windows/SignUp/SignUp";
 import SignOn from "./Windows/SignOn/SignOn";
 import BuddyList from "./Windows/BuddyList/BuddyList";
+import InstantMessage from "./Windows/InstantMessage/InstantMessage";
+import BuddyInfo from "./components/BuddyInfo";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -62,6 +61,21 @@ function App() {
                   component={InstantMessage}
                   authenticated
                 />
+                {/* <DynamicRoute
+                  path="/:id/away"
+                  component={AwayMessage}
+                  authenticated
+                /> */}
+                {/* <DynamicRoute
+                  path="/:id/chat"
+                  component={BuddyChat}
+                  authenticated
+                /> */}
+                {/* <DynamicRoute
+                  path="/:id/info"
+                  component={EditBuddyInfo}
+                  authenticated
+                /> */}
                 <DynamicRoute path="/signup" component={SignUp} guest />
                 <DynamicRoute path="/signon" component={SignOn} guest />
               </Switch>

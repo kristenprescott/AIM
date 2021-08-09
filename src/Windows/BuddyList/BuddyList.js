@@ -25,7 +25,11 @@ import classNames from "classnames";
 import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
 
+import { useAuthState } from "../../context/auth";
 import { useMessageDispatch, useMessageState } from "../../context/message";
+
+import Users from "../../components/Users";
+import Message from "../../components/Message";
 
 const GET_USERS = gql`
   query getUsers {
@@ -37,6 +41,14 @@ const GET_USERS = gql`
       buddyInfo
       phoneNumber
       email
+      buddies {
+        id
+        screenname
+        role
+        email
+        phoneNumber
+        imagePath
+      }
       latestMessage {
         uuid
         from
@@ -48,7 +60,11 @@ const GET_USERS = gql`
   }
 `;
 
-export default function BuddyList(props) {
+export default function BuddyList({ signOut }) {
+  const { user } = useAuthState();
+
+  const [imOpen, setImOpen] = useState(false);
+
   const [active, setActive] = useState({
     activeTab: 0,
   });
@@ -65,18 +81,32 @@ export default function BuddyList(props) {
     onError: (err) => console.log(err),
   });
 
-  // TODO: Fix aimBotMarkup
-  let aimBotMarkup;
+  // TODO: Fix botMarkup
+  let botMarkup;
   if (!users || loading) {
-    aimBotMarkup = <p>Loading..</p>;
+    botMarkup = <p>Loading..</p>;
   } else if (users.length === 0) {
-    aimBotMarkup = <p>No users have joined yet</p>;
+    botMarkup = <p>No users have joined yet</p>;
   } else if (users.length > 0) {
-    if (users.isBot === true) {
-      aimBotMarkup = users.map((user) => {
-        <p>{user.screenname}</p>;
-      });
-    }
+    botMarkup = users.map((user) => {
+      const selected = selectedUser === user.screenname;
+      if (users.role === "bot") {
+        return (
+          <div
+            style={{ cursor: "pointer" }}
+            role="button"
+            key={user.screenname}
+            className={classNames("screennames", { "bg-white": selected })}
+            onClick={() => {
+              setImOpen(true);
+              dispatch({ type: "SET_SELECTED_USER", payload: user.screenname });
+            }}
+          >
+            <p>{user.screenname}</p>;
+          </div>
+        );
+      }
+    });
   }
 
   let buddyListMarkup;
@@ -97,21 +127,14 @@ export default function BuddyList(props) {
             dispatch({ type: "SET_SELECTED_USER", payload: user.screenname })
           }
         >
-          <img
-            alt="avatar"
-            src={user.avatar}
-            className="avatar"
+          {user.screenname}
+          {/* <img
+            alt="imagePath"
+            src={user.imagePath}
+            className="imagePath"
             style={{ width: "30px" }}
-          />
-          <div>
-            <p className="screenname">{user.screenname}</p>
-            <p className="messages">
-              {user.latestMessage
-                ? user.latestMessage.content
-                : "You are now connected!"}
-            </p>
-            {/* <p>{user.latestMessage.content}</p> */}
-          </div>
+          /> */}
+          {/* <Message user={user} /> */}
         </div>
       );
     });
@@ -119,7 +142,7 @@ export default function BuddyList(props) {
 
   return (
     <div className="IM">
-      <button onClick={props.signOut} className="temp-btn">
+      <button onClick={signOut} className="temp-btn">
         SignOut
       </button>
       <Window className="window buddyListWindow">
@@ -129,21 +152,19 @@ export default function BuddyList(props) {
             <img className="favicon" alt="favicon" src={favicon} />
             {/* TODO: Make <Screenname>'s BuddyList dynamic */}
             <span className="windowTitle" style={{ margin: "1px" }}>
-              {props.screenname && props.screenname}'s Buddy List...
+              {user && user.screenname} 's Buddy List...
             </span>
           </div>
 
           <div className="window-header-btns">
             <Button square style={{ margin: "1px" }}>
               <span role="img" aria-label="recycle">
-                {/* _  */}
-                {/* – */}
                 &minus;
               </span>
             </Button>
             <Button square style={{ margin: "1px" }}>
               <span role="img" aria-label="recycle">
-                {/* ▢ */}□
+                □
               </span>
             </Button>
             <Button square style={{ margin: "1px" }}>
@@ -184,6 +205,7 @@ export default function BuddyList(props) {
                 List Setup
               </Tab>
             </Tabs>
+            {/* // -------------------------BUDDYLIST------------------------------------ // */}
             <TabBody style={{ height: "100%" }}>
               {activeTab === 0 && (
                 <div style={{ height: "100%" }}>
@@ -191,7 +213,7 @@ export default function BuddyList(props) {
                     <div className="buddyList">
                       <details>
                         <summary>AIM Bots(1/1)</summary>
-                        <div className="buddyListMarkup">{aimBotMarkup}</div>
+                        <div className="buddyListMarkup">{botMarkup}</div>
                       </details>
                       <details>
                         <summary>Buddies(4/18)</summary>

@@ -33,6 +33,16 @@ const messageReducer = (state, action) => {
         ...state,
         users: usersCopy,
       };
+    case "OPEN_IM":
+      usersCopy = state.users.map((user) => ({
+        ...user,
+        open: user === action.payload,
+      }));
+
+      return {
+        ...state,
+        users: usersCopy,
+      };
     default:
       throw new Error(`Unknown action type: ${action.type}`);
   }

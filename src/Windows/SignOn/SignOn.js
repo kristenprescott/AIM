@@ -21,9 +21,27 @@ import BuddyList from "../BuddyList/BuddyList";
 const SIGNON_USER = gql`
   query signOn($screenname: String!, $password: String!) {
     signOn(screenname: $screenname, password: $password) {
+      id
       screenname
+      role
+      email
+      phoneNumber
+      buddyInfo
+      imagePath
+      updatedAt
       createdAt
       token
+      buddies {
+        id
+        screenname
+        role
+        buddyInfo
+        phoneNumber
+        email
+        imagePath
+        createdAt
+        updatedAt
+      }
     }
   }
 `;
@@ -57,8 +75,6 @@ export default function SignOn(props) {
     signOnUser({ variables });
     setIsSignedOn(true);
   };
-  console.log("Signed on? ", isSignedOn);
-  console.log(screenname);
 
   return (
     <div

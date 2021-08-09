@@ -86,8 +86,9 @@ hr.hr {
 }
 .screenname {
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 900;
   font-family: "Arial", "Helvetica", sans- "serif";
+  color: red;
 }
 .avatar {
   width: "25px";
