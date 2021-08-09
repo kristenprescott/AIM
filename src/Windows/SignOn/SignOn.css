@@ -1,0 +1,38 @@
+.SignOn {
+  /*  */
+}
+.SignOnWindow {
+  width: 23em;
+  height: 40em;
+}
+.closeWindowBtn {
+  margin-top: 10px;
+  margin-right: 10px;
+  top: 0;
+  right: 0;
+}
+.fieldsetWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 13px;
+}
+.checkboxWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+.signOnBtnWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  margin-right: 25px;
+}
+.versionWrapper {
+  margin-top: 5px;
+  margin-left: 35%;
+}
+.versionWrapper > small {
+  font-family: "VT323", monospace;
+  font-size: 16px;
+}

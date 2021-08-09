@@ -1,0 +1,97 @@
+/* <------------------- TEMP-BTN -------------------> */
+button.temp-btn {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 50px;
+  margin: 0.5rem;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: floralwhite;
+  background-color: tomato;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+button.temp-btn:hover {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+button.temp-btn:active {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.75);
+}
+
+.IM {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.buddyListWindow {
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 650px;
+}
+.buddyListWindowHeader {
+  width: auto;
+  height: 2.3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.favicon {
+  width: 1rem;
+  height: 1rem;
+  margin: 1px;
+}
+.window-header-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.window-header-title-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+hr.hr {
+  width: 98%;
+  margin: 0 auto;
+  color: gray;
+  border-top: 1px solid gray;
+  box-shadow: 1px 1px 0px gainsboro;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+#cutout {
+  background-color: white;
+  height: 95%;
+}
+#panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  height: 3em;
+  width: 100%;
+}
+.screenname {
+  font-size: 13px;
+  font-weight: 200;
+  font-family: "Arial", "Helvetica", sans- "serif";
+}
+.avatar {
+  width: "25px";
+}
+.bg-white {
+  background-color: "white";
+}

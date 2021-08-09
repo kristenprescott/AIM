@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+<div align="center"><img src="https://user-images.githubusercontent.com/55470100/127603950-608b7066-62be-44c7-8694-2b1e07e88d2e.gif" width="100%" /></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+<!-- <div align="center"><img src="https://user-images.githubusercontent.com/55470100/127604118-12eb694b-a640-4c24-9426-366d21abd9fa.gif" width="100%" /></div> -->
 
-In the project directory, you can run:
+<!-- <div align="center"><img src="https://user-images.githubusercontent.com/55470100/127604091-95a44bc6-dbdc-4666-990f-42134fedc092.png" width="100%" /></div> -->
 
-### `yarn start`
+<div align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Link to server repo](https://github.com/kristenprescott/AIM-server)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  </div>
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<samp align="center">
 
-### `yarn build`
+My attempt at a copycat AOL Instant Messenger. Made using React & GraphQL with Node/Express and MySQL.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Heavily relying on [react25](https://github.com/arturbien/React95) for styling!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</samp>
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- <div align="center">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![AOL_logo_asia-700x700](https://user-images.githubusercontent.com/55470100/127603447-538882e0-f564-45a7-8279-0530e11dd82f.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+</div> -->
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- <div align="center">
 
-## Learn More
+![AOL_logo_asia-700x700](https://user-images.githubusercontent.com/55470100/127604212-dffb44fe-2c36-4ad7-82ec-174d07a261c8.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+</div> -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- <div align="center">
 
-### Code Splitting
+![AOL_logo_asia-700x700](https://user-images.githubusercontent.com/55470100/127604352-639068cb-13c3-4770-a260-f812428a8992.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+</div> -->
 
-### Analyzing the Bundle Size
+<!-- <div align="center">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![AOL_logo_asia-700x700](https://user-images.githubusercontent.com/55470100/127604475-e466a756-c992-4939-beeb-1d27694bb50f.png)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div> -->
