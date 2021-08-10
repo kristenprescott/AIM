@@ -81,6 +81,7 @@ export default function BuddyList({ signOut }) {
 
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
+    console.assert(position);
   };
 
   const [selectedUser, setSelectedUser] = useState(null);
@@ -199,7 +200,11 @@ export default function BuddyList({ signOut }) {
 
   return (
     <div className="IM BuddyList">
-      <button onClick={signOut} className="temp-btn">
+      <button
+        onClick={signOut}
+        className="temp-btn"
+        style={{ cursor: "pointer" }}
+      >
         SignOut
       </button>
       {openIM && (

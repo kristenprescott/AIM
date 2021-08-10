@@ -14,7 +14,9 @@ export default function BuddyInfo({ history }) {
 
   const signOut = () => {
     dispatch({ type: "SIGNOUT" });
-    history.push("/signon");
+
+    window.location.href = "/signon";
+    // history.push("/signon");
   };
 
   return (

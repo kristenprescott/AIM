@@ -20,12 +20,12 @@ import sendIM from "../../assets/sounds/im_send.wav";
 import {
   Button,
   Select,
-  TextField,
   Toolbar,
   Window,
   WindowContent,
   WindowHeader,
 } from "react95";
+import { Frame } from "@react95/core";
 
 import { useState } from "react";
 import Draggable from "react-draggable";
@@ -56,6 +56,7 @@ export default function InstantMessage({
 
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
+    console.assert(position);
   };
 
   const [text, setText] = useState("");
@@ -372,27 +373,67 @@ export default function InstantMessage({
                   />
                 </div>
               </div>
-              <TextField
+              {/* <Frame width={600} height={200} boxShadow="in" bg="white" /> */}
+              <Frame width={600} height={220} padding={1} margin={1}>
+                <Frame
+                  height="100%"
+                  width="100%"
+                  bg="white"
+                  style={{
+                    border: "inset 3px solid gray",
+                    borderRadius: "0px",
+                    boxShadow:
+                      "-2px -2px 3px rgba(0,0,0,0.9), 2px 2px 0px floralwhite",
+                  }}
+                >
+                  {" "}
+                  {messagesData && messagesData.getMessages.length > 0 ? (
+                    messagesData.getMessages.map((message) => (
+                      <p
+                        key={message.uuid}
+                        style={{ fontSize: "20px", padding: "6px" }}
+                      >
+                        <span
+                          style={{
+                            fontWeight: "900",
+                            color: "red",
+                            margin: "10px",
+                            marginRight: "13px",
+                          }}
+                        >
+                          {message.from}:
+                        </span>
+                        <span>{message.content}</span>
+                      </p>
+                    ))
+                  ) : (
+                    // TODO: replace with ... anim
+                    <p>...</p>
+                  )}
+                </Frame>
+              </Frame>
+              {/* <TextField
                 multiline
                 fullWidth
                 rows={6}
                 cols={50}
                 value={text}
                 onChange={handleChange}
-              >
-                {/* <div className="messages">{selectedChatMarkup}</div> */}
-                <div className="messages">
+              /> */}
+              {/* <div className="messages">{selectedChatMarkup}</div> */}
+              {/* <div className="messages">
                   {messagesData && { messagesMarkup }}
-                </div>
+                </div> */}
 
-                {/* <div>
-              {messagesData && messagesData.getMessages.length > 0 ? (
-                <p key={message.uuid}>{message.conent}</p>
-              ) : (
-                <p>Messages:</p>
-              )}
-            </div> */}
-              </TextField>
+              {/* <div>
+                  {messagesData && messagesData.getMessages.length > 0 ? (
+                    <p key={messagesData.message.uuid}>
+                      {messagesData.message.content}
+                    </p>
+                  ) : (
+                    <p>Messages:</p>
+                  )}
+                </div> */}
 
               <div className="textfield">
                 <div className="footer-btns-wrapper">
