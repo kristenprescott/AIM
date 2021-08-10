@@ -26,8 +26,8 @@ export default function Profile({ history }) {
     >
       {/* <Users /> */}
       {/* <Messages /> */}
-      <InstantMessage />
-      <BuddyList signOut={signOut} />
+      {/* <InstantMessage /> */}
+      {/* <BuddyList signOut={signOut} /> */}
     </div>
   );
 }
