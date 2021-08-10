@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { gql, useLazyQuery } from "@apollo/client";
+// import React, { useEffect } from "react";
+// import { gql, useLazyQuery } from "@apollo/client";
 
 export default function Message({ user }) {
   //

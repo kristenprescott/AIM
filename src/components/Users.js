@@ -88,6 +88,7 @@ export default function Users() {
   } else if (users.length > 0) {
     buddyListMarkup = users.map((user) => {
       const selected = selectedUser.screenname === user.screenname;
+      console.log(selected);
 
       return (
         <div

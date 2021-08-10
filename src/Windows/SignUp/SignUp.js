@@ -35,7 +35,7 @@ export default function SignUp(props) {
 
   const [errors, setErrors] = useState({});
 
-  const [signUpUser, { loading }] = useMutation(SIGNUP_USER, {
+  const [signUpUser /*, { loading }*/] = useMutation(SIGNUP_USER, {
     update: (_, __) => props.history.push("/signon"),
     onError: (err) => setErrors(err.graphQLErrors[0].extensions.errors),
   });

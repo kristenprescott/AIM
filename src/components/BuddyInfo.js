@@ -1,11 +1,15 @@
+// import { useState } from "react";
+
 import { useAuthDispatch } from "../context/auth";
 
 // import Users from "./Users";
 // import Messages from "./Messages";
 import BuddyList from "../Windows/BuddyList/BuddyList";
-import InstantMessage from "../Windows/InstantMessage/InstantMessage";
+// import InstantMessage from "../Windows/InstantMessage/InstantMessage";
 
-export default function Profile({ history }) {
+export default function BuddyInfo({ history }) {
+  // const [selectedUser, setSelectedUser] = useState(null);
+
   const dispatch = useAuthDispatch();
 
   const signOut = () => {
@@ -15,19 +19,23 @@ export default function Profile({ history }) {
 
   return (
     <div
-      className="Profile"
+      className="BuddyInfo"
       style={{
         width: "100vw",
         height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        // display: "flex",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
     >
       {/* <Users /> */}
       {/* <Messages /> */}
       {/* <InstantMessage /> */}
-      {/* <BuddyList signOut={signOut} /> */}
+      <BuddyList
+        // selectedUser={selectedUser}
+        // setSelectedUser={setSelectedUser}
+        signOut={signOut}
+      />
     </div>
   );
 }

@@ -26,12 +26,17 @@ button.temp-btn:active {
 }
 
 .IM {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* width: 100vw;win */
+  /* height: 100vh;win */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   margin: auto;
+}
+.BuddyList {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .buddyListWindow {
   width: 100%;

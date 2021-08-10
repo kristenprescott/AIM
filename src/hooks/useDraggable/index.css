@@ -1,0 +1,187 @@
+#Container {
+  width: 99vw;
+  height: 98vh;
+}
+
+/* DRAG & DROP */
+.box {
+  position: absolute;
+  cursor: move;
+  border-radius: 9px;
+  margin: auto;
+  user-select: none;
+
+  width: 250px;
+  height: 300px;
+  border: 3px solid gainsboro;
+  border-top: 3px solid floralwhite;
+  border-right: 3px solid darkgrey;
+  border-bottom: 3px solid gray;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.inner {
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.close-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 52px;
+  font-weight: 800;
+}
+
+.handleTop {
+  position: relative;
+  left: 0;
+  border: 3px solid floralwhite;
+  border-top: 0px solid floralwhite;
+  border-right: 3px solid darkgray;
+  height: 100%;
+  width: 50px;
+  padding: 0px;
+  margin: 0px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  /* background-color: floralwhite; */
+
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* align-items: flex-start; */
+}
+
+/* RESIZE */
+.resize-handle {
+  display: block;
+  position: absolute;
+  cursor: col-resize;
+  width: 7px;
+  right: 0;
+  /* left: 0; */
+  top: 0;
+  /* bottom: 0; */
+  z-index: 1;
+  border-right: 2px solid transparent;
+  border: 1px solid tomato;
+}
+
+.resize-handle:hover {
+  border-color: #ccc;
+}
+
+.resize-handle.active {
+  border-color: #517ea5;
+}
+
+.Block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  /* width: 250px;
+  height: 300px; */
+
+  border: 1px solid pink;
+}
+#Resizable {
+  /* background-color: rgba(255, 255, 255, 0.25); */
+  border: 1px solid gainsboro;
+  width: 100%;
+  height: 100%;
+}
+#Draggable {
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  border: 1px solid gainsboro;
+  border: 1px solid tomato;
+  background-color: tomato;
+  /* border-top: 1px solid floralwhite; */
+  /* border-right: 1px solid darkgrey; */
+  /* border-bottom: 1px solid gray; */
+  cursor: col-resize;
+  height: 100px;
+  width: 10px;
+}
+
+/* DRAG & DROP */
+.box {
+  position: absolute;
+  cursor: move;
+  border-radius: 9px;
+  /* padding: 1em; */
+  /* margin: auto; */
+  user-select: none;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* text-align: center; */
+  /* font-size: calc(10px + 2vmin); */
+
+  border: 3px solid gainsboro;
+  border-top: 3px solid floralwhite;
+  border-right: 3px solid darkgrey;
+  border-bottom: 3px solid gray;
+  border: 1px solid green;
+  /* background-color: rgba(255, 255, 255, 0.25); */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.inner {
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.handle {
+  position: fixed;
+  top: 0;
+  border: 3px solid floralwhite;
+  border-top: 0px solid floralwhite;
+  border-right: 3px solid darkgray;
+  width: 100%;
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  background-color: floralwhite;
+
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* RESIZE */
+.resize-handle {
+  display: block;
+  position: absolute;
+  cursor: col-resize;
+  width: 7px;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-right: 2px solid transparent;
+  border: 3px solid tomato;
+  background-color: tomato;
+}
+
+.resize-handle:hover {
+  border-color: #ccc;
+}
+
+.resize-handle.active {
+  border-color: #517ea5;
+}

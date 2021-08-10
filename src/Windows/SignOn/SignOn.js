@@ -58,7 +58,7 @@ export default function SignOn(props) {
   const dispatch = useAuthDispatch();
 
   // useLazyQuery: executing queries manually.
-  const [signOnUser, { loading }] = useLazyQuery(SIGNON_USER, {
+  const [signOnUser /*, { loading }*/] = useLazyQuery(SIGNON_USER, {
     onError: (err) => setErrors(err.graphQLErrors[0].extensions.errors),
     onCompleted(data) {
       dispatch({ type: "SIGNON", payload: data.signOn });
