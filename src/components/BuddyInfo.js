@@ -2,14 +2,10 @@
 
 import { useAuthDispatch } from "../context/auth";
 
-// import Users from "./Users";
-// import Messages from "./Messages";
 import BuddyList from "../Windows/BuddyList/BuddyList";
 // import InstantMessage from "../Windows/InstantMessage/InstantMessage";
 
 export default function BuddyInfo({ history }) {
-  // const [selectedUser, setSelectedUser] = useState(null);
-
   const dispatch = useAuthDispatch();
 
   const signOut = () => {

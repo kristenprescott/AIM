@@ -26,50 +26,38 @@ import {
   WindowHeader,
 } from "react95";
 import { Frame } from "@react95/core";
-
-import { useState } from "react";
 import Draggable from "react-draggable";
+import { useState, useEffect } from "react";
+import { gql, useLazyQuery } from "@apollo/client";
 
-// import { gql, useLazyQuery } from "@apollo/client";
+import { useAuthState } from "../../context/auth";
+import { useMessageDispatch, useMessageState } from "../../context/message";
 
-// import { useMessageDispatch, useMessageState } from "../../context/message";
-
-// const GET_MESSAGES = gql`
-//   query getMessages($from: String!) {
-//     getMessages(from: $from) {
-//       uuid
-//       from
-//       to
-//       content
-//       createdAt
-//     }
-//   }
-// `;
-
-export default function InstantMessage({
-  messagesData,
-  messagesMarkup,
-  selectedUser,
-  setOpenIM,
-}) {
+export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
     console.assert(position);
   };
 
-  const [text, setText] = useState("");
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const { user } = useAuthState();
+  const { users } = useMessageState();
+  const selectedUser = users.find((u) => u.selected === true);
 
-  const handleChange = (e) => {
-    console.log("message: ", e.target.value);
-    setText(e.target.value);
-  };
+  useEffect(() => {
+    getMessages({ variables: { from: user.screenname } });
+  }, []);
+
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   const handleDropdown = (e) => {
     setOpenDropdown(!openDropdown);
   };
+
+  const [
+    getMessages,
+    { loadding: messagesLoading, data: messagesData },
+  ] = useLazyQuery(GET_MESSAGES);
 
   function playSendIm() {
     let playSendIM = new Audio(sendIM);
@@ -123,48 +111,18 @@ export default function InstantMessage({
     setOpenIM(false);
   };
 
-  // const { users } = useMessageState();
-  // const dispatch = useMessageDispatch();
-
-  // const selectedUser = users?.find((u) => u.selected === true);
-  // const messages = selectedUser?.messages;
-
-  // const [
-  //   getMessages,
-  //   { loading: messagesLoading, data: messagesData },
-  // ] = useLazyQuery(GET_MESSAGES);
-
-  // useEffect(() => {
-  //   if (selectedUser && !selectedUser.messages) {
-  //     getMessages({ variables: { from: selectedUser.screenname } });
-  //   }
-  // }, [selectedUser, getMessages]);
-
-  // useEffect(() => {
-  //   if (messagesData) {
-  //     dispatch({
-  //       type: "SET_USER_MESSAGES",
-  //       payload: {
-  //         screenname: selectedUser.screenname,
-  //         messages: messagesData.getMessages,
-  //       },
-  //     });
-  //   }
-  // }, [messagesData, dispatch, selectedUser.screenname]);
-  // let selectedChatMarkup;
-  // if (!messages && !messagesLoading) {
-  //   selectedChatMarkup = <p>Select a friend</p>;
-  // } else if (messagesLoading) {
-  //   selectedChatMarkup = <p>Loading..</p>;
-  // } else if (messages.length > 0) {
-  //   selectedChatMarkup = messages.map((message) => (
-  //     <p key={message.uuid}>{message.content}</p>
-  //   ));
-  // } else if (messages.length === 0) {
-  //   selectedChatMarkup = <p>You are now connected! send your first message!</p>;
-  // }
-
-  // return <div className="messages">{selectedChatMarkup}</div>;
+  let messagesMarkup;
+  if (!messagesData || messagesLoading) {
+    messagesMarkup = <p>Loading...</p>;
+  } else if (messagesData.length === 0) {
+    messagesMarkup = <p>You have no message history with {user.screenname}</p>;
+  } else if (messagesData > 0) {
+    return (messagesMarkup = messagesData.map((message) => (
+      <div key={message.uuid} className="instantMessages">
+        <span>{message.from}: </span> <p>{message.content}</p>
+      </div>
+    )));
+  }
 
   return (
     <div className="IM">
@@ -373,7 +331,6 @@ export default function InstantMessage({
                   />
                 </div>
               </div>
-              {/* <Frame width={600} height={200} boxShadow="in" bg="white" /> */}
               <Frame width={600} height={220} padding={1} margin={1}>
                 <Frame
                   height="100%"
@@ -386,40 +343,48 @@ export default function InstantMessage({
                       "-2px -2px 3px rgba(0,0,0,0.9), 2px 2px 0px floralwhite",
                   }}
                 >
-                  {" "}
-                  {messagesData && messagesData.getMessages.length > 0 ? (
-                    messagesData.getMessages.map((message) => (
-                      <p
-                        key={message.uuid}
-                        style={{ fontSize: "20px", padding: "6px" }}
-                      >
-                        <span
-                          style={{
-                            fontWeight: "900",
-                            color: "red",
-                            margin: "10px",
-                            marginRight: "13px",
-                          }}
+                  {/* <div>
+                    <p className="screenname">{user.screenname}</p>
+                    <p className="messages">
+                      {user.latestMessage ? user.latestMessage.content : "..."}
+                    </p>
+                  </div> */}
+
+                  <div>
+                    {messagesData && messagesData.getMessages.length > 0 ? (
+                      messagesData.getMessages.map((message) => (
+                        <p
+                          key={message.uuid}
+                          style={{ fontSize: "20px", padding: "6px" }}
                         >
-                          {message.from}:
-                        </span>
-                        <span>{message.content}</span>
+                          <span
+                            style={{
+                              fontWeight: "900",
+                              color: "red",
+                              margin: "10px",
+                              marginRight: "13px",
+                            }}
+                          >
+                            {message.from}:
+                          </span>
+                          <span>{message.content}</span>
+                        </p>
+                      ))
+                    ) : (
+                      // TODO: replace with ... anim
+                      <p
+                        style={{
+                          fontSize: "20px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        ...
                       </p>
-                    ))
-                  ) : (
-                    // TODO: replace with ... anim
-                    <p>...</p>
-                  )}
+                    )}
+                  </div>
                 </Frame>
               </Frame>
-              {/* <TextField
-                multiline
-                fullWidth
-                rows={6}
-                cols={50}
-                value={text}
-                onChange={handleChange}
-              /> */}
+
               {/* <div className="messages">{selectedChatMarkup}</div> */}
               {/* <div className="messages">
                   {messagesData && { messagesMarkup }}

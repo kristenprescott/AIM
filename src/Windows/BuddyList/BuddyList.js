@@ -21,80 +21,36 @@ import {
   WindowHeader,
 } from "react95";
 import classNames from "classnames";
-
-import { gql, useQuery, useLazyQuery } from "@apollo/client";
-import { useState, useEffect } from "react";
-
-import { useAuthState } from "../../context/auth";
-import { useMessageDispatch, useMessageState } from "../../context/message";
-
-// import Users from "../../components/Users";
-// import Message from "../../components/Message";
-
-import InstantMessage from "../InstantMessage/InstantMessage";
-
 import Draggable from "react-draggable";
+import { gql, useQuery } from "@apollo/client";
+import { useState } from "react";
 
-const GET_USERS = gql`
-  query getUsers {
-    getUsers {
-      screenname
-      role
-      imagePath
-      createdAt
-      buddyInfo
-      phoneNumber
-      email
-      buddies {
-        id
-        screenname
-        role
-        email
-        phoneNumber
-        imagePath
-      }
-      latestMessage {
-        uuid
-        from
-        to
-        content
-        createdAt
-      }
-    }
-  }
-`;
-
-const GET_MESSAGES = gql`
-  query getMessages($from: String!) {
-    getMessages(from: $from) {
-      uuid
-      from
-      to
-      content
-      createdAt
-    }
-  }
-`;
+import { useMessageDispatch, useMessageState } from "../../context/message";
+import { useAuthState } from "../../context/auth";
+import InstantMessage from "../InstantMessage/InstantMessage";
 
 export default function BuddyList({ signOut }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
     console.assert(position);
   };
 
-  const [selectedUser, setSelectedUser] = useState(null);
   const [openIM, setOpenIM] = useState(false);
-
+  const dispatch = useMessageDispatch();
   const { user } = useAuthState();
-  const [imOpen, setImOpen] = useState(false);
+  const { users } = useMessageState();
+  const selectedUser = users?.find((u) => u.selected === true)?.screenname;
+
+  const handleSelectedUser = () => {
+    dispatch({ type: "SET_SELECTED_USER", payload: user.screenname });
+    setOpenIM(true);
+  };
+
   const [active, setActive] = useState({
     activeTab: 0,
   });
-  const dispatch = useMessageDispatch();
-  const { users } = useMessageState();
-  // const selectedUser = users?.find((u) => u.selected === true)?.screenname;
+
   const handleChange = (e, value) => setActive({ activeTab: value });
   const { activeTab } = active;
 
@@ -104,74 +60,14 @@ export default function BuddyList({ signOut }) {
     onError: (err) => console.log(err),
   });
 
-  const [
-    getMessages,
-    { loadding: messagesLoading, data: messagesData },
-  ] = useLazyQuery(GET_MESSAGES);
-
-  useEffect(() => {
-    // when selectedUser, fetch messges
-    if (selectedUser) {
-      getMessages({ variables: { from: selectedUser } });
-    }
-  }, [selectedUser, getMessages]);
-
-  const handleSelectedUser = () => {
-    setSelectedUser(user.screenname);
-    setOpenIM(true);
-  };
-
-  let messagesMarkup;
-  if (!messagesData || messagesLoading) {
-    messagesMarkup = <p>Loading...</p>;
-  } else if (messagesData.length === 0) {
-    messagesMarkup = <p>You have no message history with {user.screenname}</p>;
-  } else if (messagesData > 0) {
-    return (messagesMarkup = messagesData.map((message) => (
-      <div key={message.uuid} className="instantMessages">
-        <span>{message.from}: </span> <p>{message.content}</p>
-      </div>
-    )));
-  }
-
-  // TODO: Fix botMarkup
-  let botMarkup;
+  let usersMarkup;
   if (!users || loading) {
-    botMarkup = <p>Loading...</p>;
+    usersMarkup = <p>Loading...</p>;
   } else if (users.length === 0) {
-    botMarkup = <p>All bots are currently under routine maintenance.</p>;
+    usersMarkup = <p></p>;
   } else if (users.length > 0) {
-    botMarkup = users.map((user) => {
-      const selected = selectedUser === user.screenname;
-      if (users.role === "bot") {
-        return (
-          <div
-            style={{ cursor: "pointer" }}
-            role="button"
-            key={user.screenname}
-            className={classNames("screennames", { "bg-white": selected })}
-            onClick={() => {
-              setImOpen(true);
-              console.log(imOpen);
-              dispatch({ type: "SET_SELECTED_USER", payload: user.screenname });
-            }}
-          >
-            <p>{user.screenname}</p>;
-          </div>
-        );
-      }
-      return botMarkup;
-    });
-  }
-
-  let buddyListMarkup;
-  if (!users || loading) {
-    buddyListMarkup = <p>Loading...</p>;
-  } else if (users.length === 0) {
-    buddyListMarkup = <p></p>;
-  } else if (users.length > 0) {
-    buddyListMarkup = users.map((user) => {
-      const selected = selectedUser === user.screenname;
+    usersMarkup = users.map((user) => {
+      const selected = user.screenname;
       return (
         <div
           style={{ cursor: "pointer" }}
@@ -181,18 +77,17 @@ export default function BuddyList({ signOut }) {
           onClick={() => {
             handleSelectedUser();
           }}
-          // onClick={() =>
-          //   dispatch({ type: "SET_SELECTED_USER", payload: user.screenname })
-          // }
         >
-          {user.screenname}
+          <p>{user.screenname}</p>
           {/* <img
             alt="imagePath"
             src={user.imagePath}
             className="imagePath"
             style={{ width: "30px" }}
           /> */}
-          {/* <Message user={user} /> */}
+          <div>
+            {/* <p>{user.latestMessag ? user.latestMesage.content : "..."}</p> */}
+          </div>
         </div>
       );
     });
@@ -208,12 +103,7 @@ export default function BuddyList({ signOut }) {
         SignOut
       </button>
       {openIM && (
-        <InstantMessage
-          messagesData={messagesData}
-          messagesMarkup={messagesMarkup}
-          selectedUser={selectedUser}
-          setOpenIM={setOpenIM}
-        />
+        <InstantMessage setOpenIM={setOpenIM} GET_MESSAGES={GET_MESSAGES} />
       )}
       <Draggable handle="#handle" onDrag={(e, data) => trackPos(data)}>
         <Window className="window buddyListWindow">
@@ -289,13 +179,13 @@ export default function BuddyList({ signOut }) {
                         <div className="buddyList">
                           <details>
                             <summary>AIM Bots(1/1)</summary>
-                            <div className="buddyListMarkup">{botMarkup}</div>
+                            <div className="buddyListMarkup">
+                              {/* {botMarkup} */}
+                            </div>
                           </details>
                           <details>
                             <summary>Buddies(4/18)</summary>
-                            <div className="buddyListMarkup">
-                              {buddyListMarkup}
-                            </div>
+                            <div className="buddyListMarkup">{usersMarkup}</div>
                           </details>
                           <details>
                             <summary
@@ -306,9 +196,7 @@ export default function BuddyList({ signOut }) {
                             >
                               Offline(13/18)
                             </summary>
-                            <div className="buddyListMarkup">
-                              {buddyListMarkup}
-                            </div>
+                            <div className="buddyListMarkup">{usersMarkup}</div>
                           </details>
                         </div>
                       </Cutout>
@@ -349,3 +237,44 @@ export default function BuddyList({ signOut }) {
 }
 
 // TODO: add sound notif
+
+const GET_USERS = gql`
+  query getUsers {
+    getUsers {
+      screenname
+      role
+      imagePath
+      createdAt
+      buddyInfo
+      phoneNumber
+      email
+      buddies {
+        id
+        screenname
+        role
+        email
+        phoneNumber
+        imagePath
+      }
+      latestMessage {
+        uuid
+        from
+        to
+        content
+        createdAt
+      }
+    }
+  }
+`;
+
+const GET_MESSAGES = gql`
+  query getMessages($from: String!) {
+    getMessages(from: $from) {
+      uuid
+      from
+      to
+      content
+      createdAt
+    }
+  }
+`;

@@ -163,7 +163,7 @@ export default function SignUp(props) {
                     cursor: "pointer",
                   }}
                 >
-                  Already have an account? <a href="/signon">SignOn</a>
+                  <a href="/signon"> Already have an account? SignOn</a>
                 </small>
               </Fieldset>
               <div className="checkboxWrapper">
