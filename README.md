@@ -20,7 +20,7 @@ My attempt at a copycat AOL Instant Messenger. Made using React & GraphQL with N
 
 ---
 
-Heavily relying on [react25](https://github.com/arturbien/React95) for styling!
+Heavily relying on [react95](https://github.com/arturbien/React95) for styling!
 
 </samp>
 
