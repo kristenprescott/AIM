@@ -66,6 +66,9 @@ button.temp-btn:active {
   justify-content: center;
   align-items: center;
 }
+.windowTitle {
+  font-size: 10px;
+}
 hr.hr {
   width: 98%;
   margin: 0 auto;
