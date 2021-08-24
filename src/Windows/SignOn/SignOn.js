@@ -66,6 +66,7 @@ export default function SignOn(props) {
 
   const dispatch = useAuthDispatch();
 
+  // TODO: Handled unauthorized user - conditionally redirect back to SignOn instead
   // useLazyQuery: executing queries manually.
   const [signOnUser /*, { loading }*/] = useLazyQuery(SIGNON_USER, {
     onError: (err) => setErrors(err.graphQLErrors[0].extensions.errors),
