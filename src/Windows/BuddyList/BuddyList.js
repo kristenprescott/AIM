@@ -86,7 +86,7 @@ export default function BuddyList({ signOut }) {
             style={{ width: "30px" }}
           /> */}
           <div>
-            {/* <p>{user.latestMessag ? user.latestMesage.content : "..."}</p> */}
+            {/* <p>{user.latestMessage ? user.latestMessage.content : "..."}</p> */}
           </div>
         </div>
       );
