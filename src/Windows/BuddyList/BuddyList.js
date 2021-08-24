@@ -231,7 +231,6 @@ export default function BuddyList({ signOut }) {
           </div>
         </Window>
       </Draggable>
-      ;
     </div>
   );
 }
