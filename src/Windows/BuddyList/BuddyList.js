@@ -223,7 +223,7 @@ export default function BuddyList({ signOut }) {
                 </TabBody>
               </div>
               <Panel variant="well" id="panel">
-                Put some content here
+                {/* Put some content here */}
               </Panel>
             </WindowContent>
 

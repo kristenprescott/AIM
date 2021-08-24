@@ -16,7 +16,23 @@
 
 <samp align="center">
 
-My attempt at a copycat AOL Instant Messenger. Made using React & GraphQL with Node/Express and MySQL.
+AOL Instant Messenger copycat made with React, Apollo/GraphQL, & MySQL
+
+---
+
+Example images of a few component's current progress:
+
+</samp>
+
+<div align="center">
+
+<img width="500" alt="Screen Shot 2021-08-24 at 12 05 50 PM" src="https://user-images.githubusercontent.com/55470100/130651070-72f2e268-5b4d-4788-b7fb-90ff64f5e688.png">
+
+<img width="500" alt="Screen Shot 2021-08-24 at 12 05 40 PM" src="https://user-images.githubusercontent.com/55470100/130651097-683a1269-7cfa-492d-99ea-42fa15469fc9.png">
+
+</div>
+
+<samp align="center">
 
 ---
 

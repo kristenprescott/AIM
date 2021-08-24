@@ -37,6 +37,7 @@ button.temp-btn:active {
   position: absolute;
   top: 0;
   right: 0;
+  margin-right: 25px;
 }
 .buddyListWindow {
   width: 100%;
