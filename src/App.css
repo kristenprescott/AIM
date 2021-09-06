@@ -1,3 +1,31 @@
+@font-face {
+  font-family: "ARLRDBD";
+  font-style: normal;
+  font-weight: normal;
+  src: local("ARLRDBD"), url("./assets/fonts/ARLRDBD.TTF") format("truetype");
+}
+@font-face {
+  font-family: "MEADBOLD";
+  font-style: italic;
+  font-weight: normal;
+  src: local("MEADBOLD"), url("./assets/fonts/MEADBOLD.TTF") format("truetype");
+}
+@font-face {
+  font-family: "MISTRAL";
+  font-style: italic;
+  font-weight: normal;
+  src: local("MISTRAL"), url("./assets/fonts/MISTRAL.TTF") format("truetype");
+}
+/* https://stackoverflow.com/questions/23731492/font-face-does-not-work-properly-for-italic-bold-fonts/67684681#answer-67684681 */
+/* https://scotch.io/@micwanyoike/how-to-add-fonts-to-a-react-project */
+/* Use the font(s) in classes: */
+/*
+.className {
+  font-family: MISTRAL, sans-serif
+  font-style: italic;
+}
+*/
+
 .App {
   width: 100vw;
   height: 100vh;

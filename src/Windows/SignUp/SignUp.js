@@ -1,6 +1,6 @@
 import "./SignUp.css";
 import aimLogo from "../../assets/images/aim.svg";
-import favicon from "../../assets/icons/window-icon.png";
+import favicon from "../../assets/icons/logo-icon.png";
 
 import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";

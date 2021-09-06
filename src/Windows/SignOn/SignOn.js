@@ -1,5 +1,5 @@
 import aimLogo from "../../assets/images/aim.svg";
-import favicon from "../../assets/icons/window-icon.png";
+import favicon from "../../assets/icons/logo-icon.png";
 
 import React, { useState } from "react";
 import "./SignOn.css";
@@ -181,15 +181,23 @@ export default function SignOn(props) {
                   <span style={{ color: "tomato" }}>
                     {errors && errors.screenname && errors.screenname}
                   </span>
-                  <TextField
-                    autoComplete="new-password"
-                    type="text"
-                    value={variables.screenname}
-                    onChange={(e) =>
-                      setVariables({ ...variables, screenname: e.target.value })
-                    }
-                    width={160}
-                  />
+                  <div value={variables.screenname}>
+                    <TextField
+                      autoComplete="new-password"
+                      type="text"
+                      autoFocus="true"
+                      onFocus={(e) => e.target.select()}
+                      defaultValue="<New User>"
+                      onChange={(e) =>
+                        setVariables({
+                          ...variables,
+                          screenname: e.target.value,
+                        })
+                      }
+                      width={160}
+                    />
+                  </div>
+
                   <span
                     onClick={() => {
                       console.log("Get a screen name.");

@@ -1,22 +1,25 @@
 import "./InstantMessage.css";
-import favicon from "../../assets/icons/window-icon.png";
-import fontColor from "../../assets/icons/font-color.png";
-import bold from "../../assets/icons/bold.png";
-import ital from "../../assets/icons/ital.png";
-import underline from "../../assets/icons/underline.png";
-import fontSmall from "../../assets/icons/font-small.png";
-import font from "../../assets/icons/font.png";
-import fontLarge from "../../assets/icons/font-large.png";
-import link from "../../assets/icons/link.png";
-import imgFile from "../../assets/icons/img-file.png";
-import emoji from "../../assets/icons/emoji.png";
-import mail from "../../assets/icons/mail.png";
-import news from "../../assets/icons/news.png";
-import send from "../../assets/buttons/send.png";
-import doorOpen from "../../assets/sounds/door_open.wav";
-import doorShut from "../../assets/sounds/door_close.wav";
-import recieveIM from "../../assets/sounds/im_recieve.wav";
-import sendIM from "../../assets/sounds/im_send.wav";
+import favicon from "../../assets/icons/buttons/IM.gif";
+import fontColor from "../../assets/icons/textEditor/FontColor.png";
+import bold from "../../assets/icons/textEditor/Bold.png";
+import ital from "../../assets/icons/textEditor/Ital.png";
+import underline from "../../assets/icons/textEditor/Underline.png";
+import fontSmall from "../../assets/icons/textEditor/FontSmaller.png";
+import font from "../../assets/icons/textEditor/Font.png";
+import fontLarge from "../../assets/icons/textEditor/FontLarger.png";
+import link from "../../assets/icons/textEditor/Link.png";
+import imgFile from "../../assets/icons/textEditor/ImgFile.png";
+import emoji from "../../assets/icons/textEditor/Emoji.gif";
+import mail from "../../assets/icons/textEditor/Mail.png";
+import news from "../../assets/icons/textEditor/News.png";
+import send from "../../assets/icons/buttons/Send.png";
+import doorOpen from "../../assets/sounds/BuddyOn.mp3";
+import doorShut from "../../assets/sounds/BuddyOff.mp3";
+// TODO: Change first received IM to recieveFirstIM sound
+import recieveFirstIM from "../../assets/sounds/Receive1stIM.mp3";
+import recieveIM from "../../assets/sounds/ReceiveIM.mp3";
+import sendIM from "../../assets/sounds/SendIM.mp3";
+
 import {
   Button,
   Select,
@@ -139,6 +142,7 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="window-header-title-logo" style={{}}>
                   <img alt="favicon" className="favicon" src={favicon} />
                   <span className="windowTitle" style={{ margin: "1px" }}>
+                    {/* TODO: Add `screenname - ` before 'Instant Message' below */}
                     Instant Message
                   </span>
                 </div>

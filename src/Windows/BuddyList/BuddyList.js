@@ -1,5 +1,5 @@
 import "./BuddyList.css";
-import favicon from "../../assets/icons/window-icon.png";
+import favicon from "../../assets/icons/logo-icon.png";
 import logo from "../../assets/images/profile-logo.png";
 // import doorOpen from "../../assets/sounds/door_open.wav";
 // import doorShut from "../../assets/sounds/door_close.wav";
