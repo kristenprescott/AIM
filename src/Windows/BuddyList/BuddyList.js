@@ -95,13 +95,13 @@ export default function BuddyList({ signOut }) {
 
   return (
     <div className="IM BuddyList">
-      <button
+      {/* <button
         onClick={signOut}
         className="temp-btn"
         style={{ cursor: "pointer" }}
       >
         SignOut
-      </button>
+      </button> */}
       {openIM && (
         <InstantMessage setOpenIM={setOpenIM} GET_MESSAGES={GET_MESSAGES} />
       )}

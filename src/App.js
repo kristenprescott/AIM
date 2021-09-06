@@ -11,11 +11,12 @@ import { AuthProvider } from "./context/auth";
 import { MessageProvider } from "./context/message";
 import DynamicRoute from "./utils/DynamicRoute";
 
+import Desktop from "./Desktop/Desktop";
 import SignUp from "./Windows/SignUp/SignUp";
+// import Register from './Windows/Register/Register'
 import SignOn from "./Windows/SignOn/SignOn";
 import BuddyList from "./Windows/BuddyList/BuddyList";
 import InstantMessage from "./Windows/InstantMessage/InstantMessage";
-import BuddyInfo from "./components/BuddyInfo";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -45,12 +46,8 @@ function App() {
           <ThemeProvider theme={original}>
             <BrowserRouter>
               <Switch>
-                <DynamicRoute
-                  exact
-                  path="/"
-                  component={BuddyInfo}
-                  authenticated
-                />
+                <DynamicRoute exact path="/" component={Desktop} />
+
                 <DynamicRoute
                   path="/buddylist"
                   component={BuddyList}
@@ -61,22 +58,9 @@ function App() {
                   component={InstantMessage}
                   authenticated
                 />
-                {/* <DynamicRoute
-                  path="/:id/away"
-                  component={AwayMessage}
-                  authenticated
-                /> */}
-                {/* <DynamicRoute
-                  path="/:id/chat"
-                  component={BuddyChat}
-                  authenticated
-                /> */}
-                {/* <DynamicRoute
-                  path="/:id/info"
-                  component={EditBuddyInfo}
-                  authenticated
-                /> */}
+
                 <DynamicRoute path="/signup" component={SignUp} guest />
+                {/* <DynamicRoute path="/register" component={Register} guest /> */}
                 <DynamicRoute path="/signon" component={SignOn} guest />
               </Switch>
             </BrowserRouter>

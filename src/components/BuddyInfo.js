@@ -2,7 +2,7 @@
 
 import { useAuthDispatch } from "../context/auth";
 
-import BuddyList from "../Windows/BuddyList/BuddyList";
+// import BuddyList from "../Windows/BuddyList/BuddyList";
 // import InstantMessage from "../Windows/InstantMessage/InstantMessage";
 
 export default function BuddyInfo({ history }) {
@@ -18,22 +18,17 @@ export default function BuddyInfo({ history }) {
   return (
     <div
       className="BuddyInfo"
-      style={{
-        width: "100vw",
-        height: "100vh",
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "center",
-      }}
+      style={
+        {
+          // width: "100vw",
+          // height: "100vh",
+        }
+      }
     >
       {/* <Users /> */}
       {/* <Messages /> */}
       {/* <InstantMessage /> */}
-      <BuddyList
-        // selectedUser={selectedUser}
-        // setSelectedUser={setSelectedUser}
-        signOut={signOut}
-      />
+      {/* <BuddyList signOut={signOut} /> */}
     </div>
   );
 }

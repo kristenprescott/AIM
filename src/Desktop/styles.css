@@ -1,0 +1,7 @@
+.Desktop {
+  width: 100vw;
+  height: 100vh;
+  background-color: #018281;
+
+  border: 5px solid tomato;
+}

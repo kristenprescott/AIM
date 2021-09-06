@@ -34,9 +34,9 @@ button.temp-btn:active {
   margin: auto;
 }
 .BuddyList {
-  position: absolute;
-  top: 0;
-  right: 0;
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0; */
   margin-right: 25px;
 }
 .buddyListWindow {
