@@ -47,7 +47,12 @@ function App() {
           <ThemeProvider theme={original}>
             <BrowserRouter>
               <Switch>
-                <DynamicRoute exact path="/" component={Desktop} />
+                <DynamicRoute
+                  exact
+                  path="/"
+                  component={Desktop}
+                  authenticated
+                />
                 <DynamicRoute
                   path="/buddylist"
                   component={BuddyList}
