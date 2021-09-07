@@ -1,5 +1,5 @@
 import "./InstantMessage.css";
-import favicon from "../../assets/icons/buttons/IM.gif";
+import instantMessageIcon from "../../assets/icons/buttons/IM.gif";
 import fontColor from "../../assets/icons/textEditor/FontColor.png";
 import bold from "../../assets/icons/textEditor/Bold.png";
 import ital from "../../assets/icons/textEditor/Ital.png";
@@ -129,18 +129,20 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
 
   return (
     <div className="IM">
-      {/* <------------ dragndrop ------------------> */}
       <Draggable handle="#handle" onDrag={(e, data) => trackPos(data)}>
         <Window className="window InstantMessage" style={{}}>
           <div className="box">
             <div id="handle" className="handle">
-              {/* <------------ dragndrop ------------------> */}
               <WindowHeader
                 className="window-header imWindowHeader"
                 style={{ cursor: "grab" }}
               >
                 <div className="window-header-title-logo" style={{}}>
-                  <img alt="favicon" className="favicon" src={favicon} />
+                  <img
+                    alt="instant message icon"
+                    className="favicon"
+                    src={instantMessageIcon}
+                  />
                   <span className="windowTitle" style={{ margin: "1px" }}>
                     {/* TODO: Add `screenname - ` before 'Instant Message' below */}
                     Instant Message
@@ -172,9 +174,7 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                   </Button>
                 </div>
               </WindowHeader>
-              {/* <------------ dragndrop ------------------> */}
             </div>
-            {/* <------------ dragndrop ------------------> */}
             <Toolbar>
               <Button variant="menu" size="sm">
                 <span style={{ textDecoration: "underline" }}>F</span>ile
@@ -449,14 +449,10 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 </div>
               </div>
             </WindowContent>
-            {/* <------------------- dragndrop --------------------> */}
             <div className="inner"></div>
           </div>
-          {/* <------------------- dragndrop --------------------> */}
         </Window>
-        {/* <------------------- dragndrop --------------------> */}
       </Draggable>
-      {/* <------------------- dragndrop --------------------> */}
     </div>
   );
 }

@@ -1,44 +1,17 @@
 import "./styles.css";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import original from "react95/dist/themes/original";
-import { styleReset } from "react95";
-import ms_sans_serif from "react95/dist/fonts/ms_sans_serif.woff2";
-import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 import { useAuthDispatch } from "../context/auth";
 
-import Taskbar from "./Taskbar";
+// import Taskbar from "./Taskbar";
 // import Explorer from "./Explorer";
 // import Notepad from "./Notepad";
-import Shortcuts from "./Shortcuts";
+// import Shortcuts from "./Shortcuts";
 import BuddyList from "../Windows/BuddyList/BuddyList";
-
-const GlobalStyles = createGlobalStyle`
-image-rendering: pixelated;
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif}') format('woff2');
-    font-weight: 400;
-    font-style: normal
-  }
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif_bold}') format('woff2');
-    font-weight: bold;
-    font-style: normal
-  }
-  body {
-    font-family: 'ms_sans_serif';
-  }
-  ${styleReset}
-`;
 
 export default function Desktop({ history }) {
   const dispatch = useAuthDispatch();
-
-  const isMobile = window.innerWidth < 850;
 
   // const [explorerOpened, toggleExplorer] = useState(false);
   // const [selectedItem, setSelectedItem] = useState(null);
@@ -46,8 +19,8 @@ export default function Desktop({ history }) {
   // const [items, setItems] = useState([]);
 
   // useEffect(() => {
-  //   // toggleExplorer(true);
-  //   // toggleNotepad(!isMobile);
+  //   toggleExplorer(true);
+  //   toggleNotepad(!isMobile);
   // }, [isMobile]);
 
   // const closeExplorer = () => {
@@ -79,15 +52,20 @@ export default function Desktop({ history }) {
       id="Desktop"
       style={{
         height: "100vh",
-        backgroundColor: "#018281",
+        // backgroundColor: "#018281",
       }}
     >
-      <GlobalStyles />
-      <ThemeProvider theme={original}>
-        <BuddyList signOut={signOut} />
+      <button
+        onClick={signOut}
+        className="temp-btn"
+        style={{ cursor: "pointer" }}
+      >
+        SignOut
+      </button>
+      <BuddyList />
 
-        {/* <Shortcuts openExplorer={openExlorer} /> */}
-        {/*       
+      {/* <Shortcuts openExplorer={openExlorer} /> */}
+      {/*       
       {explorerOpened && (
         <Explorer
           items={items}
@@ -104,8 +82,7 @@ export default function Desktop({ history }) {
         />
       )} */}
 
-        <Taskbar />
-      </ThemeProvider>
+      {/* <Taskbar /> */}
     </div>
   );
 }

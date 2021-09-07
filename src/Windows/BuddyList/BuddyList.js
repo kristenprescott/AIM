@@ -1,10 +1,8 @@
 import "./BuddyList.css";
-import favicon from "../../assets/icons/logo-icon.png";
+import runningMan from "../../assets/icons/logo-icon.png";
 import logo from "../../assets/images/profile-logo.png";
-// import doorOpen from "../../assets/sounds/door_open.wav";
-// import doorShut from "../../assets/sounds/door_close.wav";
-// import recieveIM from "../../assets/sounds/im_recieve.wav";
-// import sendIM from "../../assets/sounds/im_send.wav";
+// TODO: Add sounds
+
 import {
   Button,
   Checkbox,
@@ -29,7 +27,7 @@ import { useMessageDispatch, useMessageState } from "../../context/message";
 import { useAuthState } from "../../context/auth";
 import InstantMessage from "../InstantMessage/InstantMessage";
 
-export default function BuddyList({ signOut }) {
+export default function BuddyList() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const trackPos = (data) => {
     setPosition({ x: data.x, y: data.y });
@@ -95,13 +93,6 @@ export default function BuddyList({ signOut }) {
 
   return (
     <div className="IM BuddyList">
-      <button
-        onClick={signOut}
-        className="temp-btn"
-        style={{ cursor: "pointer" }}
-      >
-        SignOut
-      </button>
       {openIM && (
         <InstantMessage setOpenIM={setOpenIM} GET_MESSAGES={GET_MESSAGES} />
       )}
@@ -114,9 +105,9 @@ export default function BuddyList({ signOut }) {
                 style={{ cursor: "grab" }}
               >
                 <div className="window-header-title-logo">
-                  {/* TODO: Change icon in window header */}
-                  <img className="favicon" alt="favicon" src={favicon} />
-                  {/* TODO: Make <Screenname>'s BuddyList dynamic */}
+                  {/* // TODO: Change icon in window header */}
+                  <img className="favicon" alt="AIM icon" src={runningMan} />
+                  {/* // TODO: Make <Screenname>'s BuddyList dynamic */}
                   <span className="windowTitle" style={{ margin: "1px" }}>
                     {user && user.screenname} 's Buddy List...
                   </span>
@@ -171,7 +162,7 @@ export default function BuddyList({ signOut }) {
                     List Setup
                   </Tab>
                 </Tabs>
-                {/* // --------------BUDDYLIST-------------- // */}
+                {/*  --------------BUDDYLIST--------------  */}
                 <TabBody style={{ height: "100%" }}>
                   {activeTab === 0 && (
                     <div style={{ height: "100%" }}>
