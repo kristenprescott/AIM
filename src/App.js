@@ -13,6 +13,7 @@ import DynamicRoute from "./utils/DynamicRoute";
 
 import Desktop from "./Desktop/Desktop";
 import SignUp from "./Windows/SignUp/SignUp";
+// TODO: Change SignOn to Register page that opens in browser (after making Register Component)
 // import Register from './Windows/Register/Register'
 import SignOn from "./Windows/SignOn/SignOn";
 import BuddyList from "./Windows/BuddyList/BuddyList";
@@ -47,7 +48,6 @@ function App() {
             <BrowserRouter>
               <Switch>
                 <DynamicRoute exact path="/" component={Desktop} />
-
                 <DynamicRoute
                   path="/buddylist"
                   component={BuddyList}
@@ -58,8 +58,9 @@ function App() {
                   component={InstantMessage}
                   authenticated
                 />
-
                 <DynamicRoute path="/signup" component={SignUp} guest />
+                // TODO: Change SignOn to Register page that opens in browser
+                (after making Register Component)
                 {/* <DynamicRoute path="/register" component={Register} guest /> */}
                 <DynamicRoute path="/signon" component={SignOn} guest />
               </Switch>

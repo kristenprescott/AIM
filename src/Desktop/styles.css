@@ -1,7 +1,7 @@
 .Desktop {
   width: 100vw;
   height: 100vh;
-  background-color: #018281;
-
+  background-image: url("../assets/images/magiceye-wallpaper.jpg");
+  background-position: center;
   border: 5px solid tomato;
 }
