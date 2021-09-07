@@ -92,7 +92,7 @@ export default function BuddyList() {
   }
 
   return (
-    <div className="IM BuddyList">
+    <div className="BuddyList">
       {openIM && (
         <InstantMessage setOpenIM={setOpenIM} GET_MESSAGES={GET_MESSAGES} />
       )}
@@ -105,9 +105,7 @@ export default function BuddyList() {
                 style={{ cursor: "grab" }}
               >
                 <div className="window-header-title-logo">
-                  {/* // TODO: Change icon in window header */}
                   <img className="favicon" alt="AIM icon" src={runningMan} />
-                  {/* // TODO: Make <Screenname>'s BuddyList dynamic */}
                   <span className="windowTitle" style={{ margin: "1px" }}>
                     {user && user.screenname} 's Buddy List...
                   </span>
@@ -168,6 +166,7 @@ export default function BuddyList() {
                     <div style={{ height: "100%" }}>
                       <Cutout id="cutout">
                         <div className="buddyList">
+                          {/* // TODO: Replace details/summary w upArrow/downArrow icons */}
                           <details>
                             <summary>AIM Bots(1/1)</summary>
                             <div className="buddyListMarkup">

@@ -1,13 +1,13 @@
 .IM {
-  z-index: 10;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* TODO: Figure out how to make it possible to open multiple IMs - z-index as it is here is not cutting it. */
+  z-index: 1;
+  position: absolute;
+  top: 25%;
+  left: -200%;
+  width: 100%;
+  height: 100%;
 }
 .IMWindow {
-  /* width: 35em; */
   width: 560px;
   height: 25em;
 }

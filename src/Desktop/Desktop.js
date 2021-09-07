@@ -50,10 +50,13 @@ export default function Desktop({ history }) {
   return (
     <div
       id="Desktop"
-      style={{
-        height: "100vh",
-        // backgroundColor: "#018281",
-      }}
+      style={
+        {
+          // height: "100vh",
+          // width: "100vw",
+          // backgroundColor: "#018281",
+        }
+      }
     >
       <button
         onClick={signOut}
