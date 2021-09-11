@@ -1,6 +1,7 @@
-.Desktop {
+#Desktop {
   width: 100vw;
   height: 100vh;
   background-image: url("../assets/images/magiceye-wallpaper.jpg");
   background-position: center;
+  background-size: cover;
 }

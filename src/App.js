@@ -64,8 +64,7 @@ function App() {
                   authenticated
                 />
                 <DynamicRoute path="/signup" component={SignUp} guest />
-                // TODO: Change SignOn to Register page that opens in browser
-                (after making Register Component)
+                {/* // TODO: Change SignOn to Register page that opens in browser (after making Register Component) */}
                 {/* <DynamicRoute path="/register" component={Register} guest /> */}
                 <DynamicRoute path="/signon" component={SignOn} guest />
               </Switch>
