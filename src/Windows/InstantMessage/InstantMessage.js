@@ -1,17 +1,20 @@
 import "./InstantMessage.css";
-import instantMessageIcon from "../../assets/icons/buttons/IM.gif";
-import fontColor from "../../assets/icons/textEditor/FontColor.png";
-import bold from "../../assets/icons/textEditor/Bold.png";
-import ital from "../../assets/icons/textEditor/Ital.png";
-import underline from "../../assets/icons/textEditor/Underline.png";
-import fontSmall from "../../assets/icons/textEditor/FontSmaller.png";
-import font from "../../assets/icons/textEditor/Font.png";
-import fontLarge from "../../assets/icons/textEditor/FontLarger.png";
-import link from "../../assets/icons/textEditor/Link.png";
-import imgFile from "../../assets/icons/textEditor/ImgFile.png";
-import emoji from "../../assets/icons/textEditor/Emoji.gif";
-import mail from "../../assets/icons/textEditor/Mail.png";
-import news from "../../assets/icons/textEditor/News.png";
+import { instantMessageBtn } from "../../assets/icons/buttons/index";
+import {
+  BoldIcon,
+  ItalIcon,
+  UnderlineIcon,
+  FontIcon,
+  FontColorIcon,
+  FontLargeIcon,
+  FontSmallIcon,
+  LinkIcon,
+  ImgFileIcon,
+  EmojiIcon,
+  MailIcon,
+  NewsIcon,
+} from "../../assets/icons/textEditor/index";
+
 import send from "../../assets/icons/buttons/Send.png";
 import doorOpen from "../../assets/sounds/BuddyOn.mp3";
 import doorShut from "../../assets/sounds/BuddyOff.mp3";
@@ -141,7 +144,7 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                   <img
                     alt="instant message icon"
                     className="favicon"
-                    src={instantMessageIcon}
+                    src={instantMessageBtn}
                   />
                   <span className="windowTitle" style={{ margin: "1px" }}>
                     {/* TODO: Add `screenname - ` before 'Instant Message' below */}
@@ -233,12 +236,12 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="toolbar-section1">
                   <img
                     alt="font color"
-                    src={fontColor}
+                    src={FontColorIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={font}
+                    src={FontIcon}
                     style={{ padding: "0px 10px " }}
                   />
                 </div>
@@ -251,17 +254,17 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="toolbar-section2">
                   <img
                     alt="font color"
-                    src={fontSmall}
+                    src={FontSmallIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={font}
+                    src={FontIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={fontLarge}
+                    src={FontLargeIcon}
                     style={{ padding: "0px 10px " }}
                   />
                 </div>
@@ -274,17 +277,17 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="toolbar-section3">
                   <img
                     alt="font color"
-                    src={bold}
+                    src={BoldIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={ital}
+                    src={ItalIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={underline}
+                    src={UnderlineIcon}
                     style={{ padding: "0px 10px " }}
                   />
                 </div>
@@ -297,22 +300,22 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="toolbar-section4">
                   <img
                     alt="font color"
-                    src={link}
+                    src={LinkIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={imgFile}
+                    src={ImgFileIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={mail}
+                    src={MailIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={emoji}
+                    src={EmojiIcon}
                     style={{ padding: "0px 10px " }}
                   />
                 </div>
@@ -325,12 +328,12 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="toolbar-section5">
                   <img
                     alt="font color"
-                    src={fontColor}
+                    src={FontColorIcon}
                     style={{ padding: "0px 10px " }}
                   />
                   <img
                     alt="font color"
-                    src={news}
+                    src={NewsIcon}
                     style={{ padding: "0px 10px " }}
                   />
                 </div>
