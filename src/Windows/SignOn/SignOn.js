@@ -148,17 +148,20 @@ export default function SignOn(props) {
                     }}
                   >
                     <Button square style={{ margin: "1px" }}>
-                      <span role="img" aria-label="recycle">
+                      {/* <img src={MinimizeBtn} width="28px" /> */}
+                      <span role="img" aria-label="minimize">
                         &minus;
                       </span>
                     </Button>
                     <Button square style={{ margin: "1px" }}>
-                      <span role="img" aria-label="recycle">
+                      {/* <img src={MaximizeBtn} width="28px" /> */}
+                      <span role="img" aria-label="maximize">
                         □
                       </span>
                     </Button>
                     <Button square style={{ margin: "1px" }}>
-                      <span role="img" aria-label="recycle">
+                      {/* <img src={CloseBtn} width="28px" /> */}
+                      <span role="img" aria-label="close">
                         &times;
                       </span>
                     </Button>
