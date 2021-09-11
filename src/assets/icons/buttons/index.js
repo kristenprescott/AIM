@@ -4,7 +4,7 @@ export { default as ArrowUpBtn } from "./ArrowUp.png";
 export { default as AwayBtn } from "./Away.gif";
 export { default as HelpBtn } from "./Help.png";
 export { default as IdleBtn } from "./Idle.gif";
-export { default as instantMessageBtn } from "./IM.gif";
+export { default as InstantMessageBtn } from "./IM.gif";
 export { default as InfoBtn } from "./Info.bmp";
 export { default as InviteBtn } from "./Invite.gif";
 export { default as NewMessageBtn } from "./NewMessage.png";

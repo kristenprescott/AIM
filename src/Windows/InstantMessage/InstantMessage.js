@@ -1,5 +1,5 @@
 import "./InstantMessage.css";
-import { instantMessageBtn } from "../../assets/icons/buttons/index";
+import { InstantMessageBtn, SendBtn } from "../../assets/icons/buttons/index";
 import {
   BoldIcon,
   ItalIcon,
@@ -15,13 +15,14 @@ import {
   NewsIcon,
 } from "../../assets/icons/textEditor/index";
 
-import send from "../../assets/icons/buttons/Send.png";
-import doorOpen from "../../assets/sounds/BuddyOn.mp3";
-import doorShut from "../../assets/sounds/BuddyOff.mp3";
-// TODO: Change first received IM to recieveFirstIM sound
-import recieveFirstIM from "../../assets/sounds/Receive1stIM.mp3";
-import recieveIM from "../../assets/sounds/ReceiveIM.mp3";
-import sendIM from "../../assets/sounds/SendIM.mp3";
+// TODO: Change first received IM to recieveFir1stsound
+import {
+  BuddyOnAlert,
+  BuddyOffAlert,
+  Receive1stIMAlert,
+  ReceiveIMAlert,
+  SendIMAlert,
+} from "../../assets/sounds/index";
 
 import {
   Button,
@@ -66,22 +67,22 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
   ] = useLazyQuery(GET_MESSAGES);
 
   function playSendIm() {
-    let playSendIM = new Audio(sendIM);
+    let playSendIM = new Audio(SendIMAlert);
     playSendIM.play();
   }
 
   function playRecieveIM() {
-    let playRecieveIM = new Audio(recieveIM);
+    let playRecieveIM = new Audio(ReceiveIMAlert);
     playRecieveIM.play();
   }
 
   function playDoorOpen() {
-    let playDoorOpen = new Audio(doorOpen);
+    let playDoorOpen = new Audio(BuddyOnAlert);
     playDoorOpen.play();
   }
 
   function playDoorShut() {
-    let playDoorShut = new Audio(doorShut);
+    let playDoorShut = new Audio(BuddyOffAlert);
     playDoorShut.play();
   }
 
@@ -144,7 +145,7 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                   <img
                     alt="instant message icon"
                     className="favicon"
-                    src={instantMessageBtn}
+                    src={InstantMessageBtn}
                   />
                   <span className="windowTitle" style={{ margin: "1px" }}>
                     {/* TODO: Add `screenname - ` before 'Instant Message' below */}
@@ -411,21 +412,21 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                 <div className="footer-btns-wrapper">
                   <img
                     alt="font color"
-                    src={send}
+                    src={SendBtn}
                     style={{ width: "50px", margin: "0px 9%" }}
                     onClick={handlePlayDoorOpen}
                   />
 
                   <img
                     alt="font color"
-                    src={send}
+                    src={SendBtn}
                     style={{ width: "50px", margin: "0px 9%" }}
                     onClick={handlePlayDoorShut}
                   />
 
                   <img
                     alt="font color"
-                    src={send}
+                    src={SendBtn}
                     style={{ width: "50px", margin: "0px 9%" }}
                     onClick={handleRecieveIMClick}
                   />
@@ -445,7 +446,7 @@ export default function InstantMessage({ setOpenIM, GET_MESSAGES }) {
                   >
                     <img
                       alt="send message"
-                      src={send}
+                      src={SendBtn}
                       style={{ width: "125%", padding: "0px", margin: "0px" }}
                     />
                   </button>
